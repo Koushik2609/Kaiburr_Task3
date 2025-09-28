@@ -1,73 +1,63 @@
-# React + TypeScript + Vite
+# React Records & Command UI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A **React 19 + TypeScript + Ant Design** frontend application for managing records and running commands.  
+Users can **create, view, search, delete records, execute commands, and view outputs** with an accessible and user-friendly interface.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Table of Contents
 
-## React Compiler
+1. [Features](#features)  
+2. [Tech Stack](#tech-stack)  
+3. [Project Structure](#project-structure)  
+4. [Setup & Installation](#setup--installation)  
+5. [Usage](#usage)  
+6. [Accessibility](#accessibility)  
+7. [Testing](#testing)  
+8. [Contributing](#contributing)  
+9. [License](#license)  
+10. [Contact](#contact)  
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Records Management**
+  - Create new records via modal form
+  - View records in a table with pagination
+  - Search records with debounced input
+  - Delete records with confirmation and optimistic updates
 
-```js
-export default defineConfig([
-  globalIgnores(["dist"]),
-  {
-    files: ["**/*.{ts,tsx}"],
-    extends: [
-      // Other configs...
+- **Command Runner**
+  - Execute commands for selected records
+  - View command output in a scrollable drawer
+  - Supports async operations with loading states
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- **Accessibility & Usability**
+  - Keyboard navigation (tab order, focus management)
+  - ARIA labels for interactive elements
+  - Visible focus outlines
+  - Responsive design for desktop and mobile
+  - Notifications for success/failure
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Tech Stack
 
-```js
-// eslint.config.js
-import reactX from "eslint-plugin-react-x";
-import reactDom from "eslint-plugin-react-dom";
+- **Frontend:** React 19, TypeScript, Ant Design  
+- **State Management / Data Fetching:** React Query (optional)  
+- **HTTP Requests:** Axios  
+- **Routing:** React Router DOM  
+- **Utilities:** lodash.debounce  
+- **Testing:** Vitest, React Testing Library  
+- **Linting / Formatting:** ESLint, Prettier  
 
-export default defineConfig([
-  globalIgnores(["dist"]),
-  {
-    files: ["**/*.{ts,tsx}"],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs["recommended-typescript"],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
-```
+---
+
+##Usage
+
+Navigate to Records page to view all records.
+Use the Search bar to filter records in real-time.
+Click Add Record to create a new record.
+Click Delete to remove a record (with confirmation).
+Click Run to execute commands and view output in a drawer.
